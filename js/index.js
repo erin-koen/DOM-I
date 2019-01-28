@@ -45,23 +45,26 @@ logo.setAttribute('src', siteContent['nav']['img-src'])
 // Pushing content from the siteContent object to the HTML
 
 
+//Creating two new 'a' elements, tacking the first on the end and the latter at the beginning of the nav menu
 
 const newNav = document.createElement('a');
-const newNavTxt = document.createTextNode('Free Money Click Here');
-newNav.appendChild(newNavTxt);
-document.querySelector('nav').appendChild(newNav);
+newNav.textContent = 'Free Money Click Here';
+newNav.setAttribute('href', '#');
+document.querySelector("nav").prepend(newNav);
 
 const spam = document.createElement('a');
-const spamTxt = document.createTextNode('Not Spam');
-spam.appendChild(spamTxt);
-document.querySelector('nav').prepend(spam);
-console.log(spam);
+spam.textContent = 'Not Spam';
+spam.setAttribute('href', '#');
+document.querySelector("nav").appendChild(spam);
 
 // Creating an array of the nav links and iterating through it to change font color to green
 const navLinks = Array.from(document.getElementsByTagName('a'));
+
 navLinks.forEach(element => {
   element.style.color ='green';
 });
+
+//Adding content from the siteContent object
 
 navLinks[0].textContent = siteContent.nav["nav-item-1"];
 navLinks[1].textContent = siteContent.nav["nav-item-2"];
@@ -70,6 +73,7 @@ navLinks[3].textContent = siteContent.nav["nav-item-4"];
 navLinks[4].textContent = siteContent.nav["nav-item-5"];
 navLinks[5].textContent = siteContent.nav["nav-item-6"];
 
+console.log(navLinks);
 
 
 // Selecting the CTA img and assigning it some value from the siteContent object
