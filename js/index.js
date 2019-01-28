@@ -9,7 +9,7 @@ const siteContent = {
     "img-src": "img/logo.png"
   },
   "cta": {
-    "h1": "DOM Is Awesome",
+    "h1": "DOM<br>Is<br> Awesome",
     "button": "Get Started",
     "img-src": "img/header-img.png"
   },
@@ -37,15 +37,31 @@ const siteContent = {
   },
 };
 
+
 // Example: Update the img src for the logo
 let logo = document.getElementById("logo-img");
 logo.setAttribute('src', siteContent['nav']['img-src'])
+
+// Pushing content from the siteContent object to the HTML
+
+
+
+const newNav = document.createElement('a');
+const newNavTxt = document.createTextNode('Free Money Click Here');
+newNav.appendChild(newNavTxt);
+document.querySelector('nav').appendChild(newNav);
+
+const spam = document.createElement('a');
+const spamTxt = document.createTextNode('Not Spam');
+spam.appendChild(spamTxt);
+document.querySelector('nav').prepend(spam);
+console.log(spam);
+
 // Creating an array of the nav links and iterating through it to change font color to green
 const navLinks = Array.from(document.getElementsByTagName('a'));
 navLinks.forEach(element => {
   element.style.color ='green';
 });
-// Pushing content from the siteContent object to the HTML
 
 navLinks[0].textContent = siteContent.nav["nav-item-1"];
 navLinks[1].textContent = siteContent.nav["nav-item-2"];
@@ -54,16 +70,20 @@ navLinks[3].textContent = siteContent.nav["nav-item-4"];
 navLinks[4].textContent = siteContent.nav["nav-item-5"];
 navLinks[5].textContent = siteContent.nav["nav-item-6"];
 
-// Selecting the first h1 in the HTML and assigning it some text
-const ctaH1 = document.querySelector('h1');
-ctaH1.textContent = siteContent.cta["h1"]
-// console.log(ctaH1);
+
+
+// Selecting the CTA img and assigning it some value from the siteContent object
 const ctaImg = document.querySelector('.cta img');
 ctaImg.setAttribute('src', siteContent['cta']['img-src'] )
 
+//Selecting the CTA h1 and assigning it content from siteContent using innerHTML to account for the <br> i added. 
+const ctaH1 = document.querySelector('.cta h1');
+ctaH1.innerHTML = siteContent.cta['h1'];
+console.log(ctaH1);
+
 //Selecting the first button in the HTML and assigning it some text. Makes me wonder about specificity syntax - can I copy CSS specificity? i.e. '.cta button' ? Answer - yes, tried it out below.
 const getStartedBtn = document.querySelector('button');
-getStartedBtn.textContent = ctaH1.textContent = siteContent.cta["button"];
+getStartedBtn.textContent = getStartedBtn.textContent = siteContent.cta["button"];
 
 //Selecting main content h4s and pushing out content from siteContent object
 const mainH4 = document.querySelectorAll('.main-content h4');
@@ -72,6 +92,7 @@ mainH4[1].textContent = siteContent['main-content']['about-h4'];
 mainH4[2].textContent = siteContent['main-content']['services-h4'];
 mainH4[3].textContent = siteContent['main-content']['product-h4'];
 mainH4[4].textContent = siteContent['main-content']['vision-h4'];
+
 
 //selecting middle image and pushing content from the siteContent object
 const middleImg = document.querySelector('.middle-img');
