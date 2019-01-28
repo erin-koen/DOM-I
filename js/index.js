@@ -39,4 +39,34 @@ const siteContent = {
 
 // Example: Update the img src for the logo
 let logo = document.getElementById("logo-img");
-logo.setAttribute('src', siteContent["nav"]["img-src"])
+logo.setAttribute('src', 'img/logo.png')
+// Creating an HTML Collection of the nav links 
+const navLinks = document.getElementsByTagName('a');
+// Assigning each some text
+navLinks[0].textContent = siteContent.nav["nav-item-1"];
+navLinks[1].textContent = siteContent.nav["nav-item-2"];
+navLinks[2].textContent = siteContent.nav["nav-item-3"];
+navLinks[3].textContent = siteContent.nav["nav-item-4"];
+navLinks[4].textContent = siteContent.nav["nav-item-5"];
+navLinks[5].textContent = siteContent.nav["nav-item-6"];
+
+// Selecting the first h1 in the HTML and assigning it some text
+const ctaH1 = document.querySelector('h1');
+ctaH1.textContent = siteContent.cta["h1"]
+// console.log(ctaH1);
+const ctaImg = document.querySelector('.cta img');
+ctaImg.setAttribute('src', 'img/header-img.png' )
+
+//Selecting the first button in the HTML and assigning it some text. Makes me wonder about specificity syntax - can I copy CSS specificity? i.e. '.cta button' ?
+const getStartedBtn = document.querySelector('button');
+getStartedBtn.textContent = ctaH1.textContent = siteContent.cta["button"];
+
+const mainH4 = document.querySelectorAll('.main-content h4');
+mainH4[0].textContent = siteContent['main-content']['features-h4'];
+mainH4[1].textContent = siteContent['main-content']['about-h4'];
+mainH4[2].textContent = siteContent['main-content']['services-h4'];
+mainH4[3].textContent = siteContent['main-content']['product-h4'];
+mainH4[4].textContent = siteContent['main-content']['vision-h4'];
+console.log(topH4);
+
+
