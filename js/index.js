@@ -39,10 +39,14 @@ const siteContent = {
 
 // Example: Update the img src for the logo
 let logo = document.getElementById("logo-img");
-logo.setAttribute('src', 'img/logo.png')
-// Creating an HTML Collection of the nav links 
-const navLinks = document.getElementsByTagName('a');
-// Assigning each some text
+logo.setAttribute('src', siteContent['nav']['img-src'])
+// Creating an array of the nav links and iterating through it to change font color to green
+const navLinks = Array.from(document.getElementsByTagName('a'));
+navLinks.forEach(element => {
+  element.style.color ='green';
+});
+// Pushing content from the siteContent object to the HTML
+
 navLinks[0].textContent = siteContent.nav["nav-item-1"];
 navLinks[1].textContent = siteContent.nav["nav-item-2"];
 navLinks[2].textContent = siteContent.nav["nav-item-3"];
@@ -55,18 +59,40 @@ const ctaH1 = document.querySelector('h1');
 ctaH1.textContent = siteContent.cta["h1"]
 // console.log(ctaH1);
 const ctaImg = document.querySelector('.cta img');
-ctaImg.setAttribute('src', 'img/header-img.png' )
+ctaImg.setAttribute('src', siteContent['cta']['img-src'] )
 
-//Selecting the first button in the HTML and assigning it some text. Makes me wonder about specificity syntax - can I copy CSS specificity? i.e. '.cta button' ?
+//Selecting the first button in the HTML and assigning it some text. Makes me wonder about specificity syntax - can I copy CSS specificity? i.e. '.cta button' ? Answer - yes, tried it out below.
 const getStartedBtn = document.querySelector('button');
 getStartedBtn.textContent = ctaH1.textContent = siteContent.cta["button"];
 
+//Selecting main content h4s and pushing out content from siteContent object
 const mainH4 = document.querySelectorAll('.main-content h4');
 mainH4[0].textContent = siteContent['main-content']['features-h4'];
 mainH4[1].textContent = siteContent['main-content']['about-h4'];
 mainH4[2].textContent = siteContent['main-content']['services-h4'];
 mainH4[3].textContent = siteContent['main-content']['product-h4'];
 mainH4[4].textContent = siteContent['main-content']['vision-h4'];
-console.log(topH4);
 
+//selecting middle image and pushing content from the siteContent object
+const middleImg = document.querySelector('.middle-img');
+middleImg.setAttribute('src', siteContent['main-content']['middle-img-src']);
 
+//selecting p content and pushing content from siteContent object
+const mainP = document.querySelectorAll('.main-content p');
+mainP[0].textContent = siteContent['main-content']['features-content'];
+mainP[1].textContent = siteContent['main-content']['about-content'];
+mainP[2].textContent = siteContent['main-content']['services-content'];
+mainP[3].textContent = siteContent['main-content']['product-content'];
+mainP[4].textContent = siteContent['main-content']['vision-content'];
+
+//selecting contact elements and pushing content from siteContent object
+const contactH4 = document.querySelector('.contact h4');
+contactH4.textContent = siteContent['contact']['contact-h4'];
+
+const contactAddress = document.querySelectorAll('.contact p');
+contactAddress[0].textContent = siteContent['contact']['address'];
+contactAddress[1].textContent = siteContent['contact']['phone'];
+contactAddress[2].textContent = siteContent['contact']['email'];
+
+const footerP = document.querySelector('footer p');
+footerP.textContent = siteContent['footer']['copyright'];
