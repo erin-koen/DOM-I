@@ -44,14 +44,17 @@ logo.setAttribute('src', siteContent['nav']['img-src'])
 
 // Pushing content from the siteContent object to the HTML
 
-let navLinks = document.querySelectorAll('nav a');
+// let navLinks = document.querySelectorAll('nav a');
+
+let navLinks2 = document.getElementsByTagName('a');
+console.log(navLinks2);
 
 
 
 //Adding content from the siteContent object
 
-for (let i = 0; i<navLinks.length; i++){
-  navLinks[i].textContent = siteContent.nav[`nav-item-${i+1}`];
+for (let i = 0; i<navLinks2.length; i++){
+  navLinks2[i].textContent = siteContent.nav[`nav-item-${i+1}`];
 }
 
 // navLinks[0].textContent = siteContent.nav["nav-item-1"];
@@ -61,7 +64,7 @@ for (let i = 0; i<navLinks.length; i++){
 // navLinks[4].textContent = siteContent.nav["nav-item-5"];
 // navLinks[5].textContent = siteContent.nav["nav-item-6"];
 
-console.log(navLinks);
+// console.log(navLinks);
 
 
 // Selecting the CTA img and assigning it some value from the siteContent object
@@ -79,6 +82,8 @@ getStartedBtn.textContent = getStartedBtn.textContent = siteContent.cta["button"
 
 //Selecting main content h4s and pushing out content from siteContent object
 const mainH4 = document.querySelectorAll('.main-content h4');
+
+
 mainH4[0].textContent = siteContent['main-content']['features-h4'];
 mainH4[1].textContent = siteContent['main-content']['about-h4'];
 mainH4[2].textContent = siteContent['main-content']['services-h4'];
@@ -99,8 +104,6 @@ mainP[3].textContent = siteContent['main-content']['product-content'];
 mainP[4].textContent = siteContent['main-content']['vision-content'];
 
 //selecting contact elements and pushing content from siteContent object
-const contactH4 = document.querySelector('.contact h4');
-contactH4.textContent = siteContent['contact']['contact-h4'];
 
 const contactAddress = document.querySelectorAll('.contact p');
 contactAddress[0].textContent = siteContent['contact']['address'];
@@ -121,8 +124,9 @@ let createNewNode = (name) => {
 navLinks.prepend(createNewNode("Not Spam"));
 navLinks.append(createNewNode("Not Spam Either"));
 
-let navLinkColor = document.querySelectorAll('nav a');
+// -- Change the nav link menu to an array for access to forEach
+const colorChange = Array.from(navLinks2);
 
-navLinkColor.forEach(element =>{
+colorChange.forEach(element =>{
   element.style.color = "green";
 })
