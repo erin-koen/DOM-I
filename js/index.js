@@ -44,25 +44,9 @@ logo.setAttribute('src', siteContent['nav']['img-src'])
 
 // Pushing content from the siteContent object to the HTML
 
+let navLinks = document.querySelectorAll('nav a');
 
-//Creating two new 'a' elements, tacking the first on the end and the latter at the beginning of the nav menu
 
-const newNav = document.createElement('a');
-newNav.textContent = 'Free Money Click Here';
-newNav.setAttribute('href', '#');
-document.querySelector("nav").prepend(newNav);
-
-const spam = document.createElement('a');
-spam.textContent = 'Not Spam';
-spam.setAttribute('href', '#');
-document.querySelector("nav").appendChild(spam);
-
-// Creating an array of the nav links and iterating through it to change font color to green
-const navLinks = Array.from(document.getElementsByTagName('a'));
-
-navLinks.forEach(element => {
-  element.style.color ='green';
-});
 
 //Adding content from the siteContent object
 
@@ -121,3 +105,20 @@ contactAddress[2].textContent = siteContent['contact']['email'];
 
 const footerP = document.querySelector('footer p');
 footerP.textContent = siteContent['footer']['copyright'];
+
+// Link Launcher
+
+navLinks = document.getElementsByTagName("nav")[0];
+let createNewNode = (name) => {
+  let newNode = document.createElement("a");
+  newNode.innerHTML = name;
+  return newNode;
+}
+navLinks.prepend(createNewNode("Not Spam"));
+navLinks.append(createNewNode("Not Spam Either"));
+
+let navLinkColor = document.querySelectorAll('nav a');
+
+navLinkColor.forEach(element =>{
+  element.style.color = "green";
+})
